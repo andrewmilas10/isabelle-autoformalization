@@ -1,0 +1,195 @@
+2024-05-02 20:12:50,725 - agent - INFO - Agent initialized
+2024-05-02 20:12:51,214 - agent - INFO - Given that $a+b = 2c$ and $c = \text{Im}(1)$, show that $ac+bc=-2$.
+
+We have $ac + bc = (a+b)c=2c^2=2i^2=-2$
+
+theorem algebra_manipexpr_apbeq2cceqiacpbceqm2:
+  fixes a b c :: complex
+  assumes h0 : "a+b = 2*c"
+    and h1 : "c = \<i>"
+  shows "a*c+b*c=-2"
+---------------------------------------------------------
+
+2024-05-02 20:12:54,973 - agent - INFO - ```isabelle
+theorem
+  fixes a b c :: complex
+  assumes "a+b = 2*c"
+    and "c = \<i>"
+  shows "a*c+b*c=-2"
+proof -
+  (* We have $ac + bc = (a+b)c = 2c^2 = 2i^2 = -2$ *)
+  have "a*c + b*c = (a+b)*c" using assms(1) by simp
+  also have "... = 2*c^2" using assms(2) by simp
+  also have "... = 2*\<i>^2" using assms(2) by simp
+  also have "... = -2" by simp
+  finally show ?thesis by simp
+qed
+```
+This formalizes the given informal solution into a sketch of the formal proof in Isabelle, including where `sledgehammer` can be applied.
+---------------------------------------------------------
+
+2024-05-02 20:13:22,271 - agent - INFO - 
+==== Success: False
+2024-05-02 20:13:22,272 - agent - INFO - --- Complete proof:
+
+2024-05-02 20:13:22,275 - agent - INFO - Find the modulo 4 residue of $17 \cdot 18$. Show that it is 2.
+
+$17 \cdot 18 \equiv 1 \cdot 2 \equiv 2 \pmod{4}$.
+
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+---------------------------------------------------------
+
+2024-05-02 20:13:28,013 - agent - INFO - ```isabelle
+theory Math_Proofs
+  imports Complex_Main
+begin
+
+theorem
+  fixes a :: complex
+  shows "(a-10) * (a+11) = a^2 + a - 110"
+proof -
+  have "(a-10) * (a+11) = a^2 - 10*a + 11*a - 10 *11"
+    by simp
+  also have "\<dots> = a^2 + a - 10 * 11"
+    by simp
+  also have "\<dots> = a^2 + a - 110"
+    by simp
+  finally show ?thesis
+    by simp
+qed
+
+theorem
+  fixes n :: nat
+  assumes h0 : "n mod 7 = 5"
+  shows "(5 * n) mod 7 = 4"
+proof -
+  have c0:"(5 * n) mod 7 = (5 * 5) mod 7"
+    using h0 by simp
+  then have "\<dots> = 4"
+    by simp
+  then have "(5 * n) mod 7 = 4"
+    using c0 by simp
+  then show ?thesis
+    by simp
+qed
+
+theorem
+  "(17 * 18) mod 4 = 2"
+  by simp
+
+end
+```
+In this sketch of the formal Isabelle proof, I have translated the informal solutions into formal proofs using Isabelle. I have included the key steps and reasoning to demonstrate the validity of the proofs. Feel free to ask if you need any further clarification or details.
+---------------------------------------------------------
+
+2024-05-02 20:13:40,324 - agent - INFO - 
+==== Success: False
+2024-05-02 20:13:40,324 - agent - INFO - --- Complete proof:
+
+2024-05-02 20:13:40,325 - agent - INFO - If $a * b = a^b + b^a$, for all positive integer values of $a$ and $b$, then what is the value of $2 * 6$? Show that it is 100.
+
+We can see that $2 * 6 = 2^6 + 6^2 = 64 + 36 = 100$.
+
+theorem mathd_algebra_15:
+  fixes s :: "nat \<Rightarrow> nat \<Rightarrow> nat"
+  assumes h0: "\<And>a b. s a b = a ^ b + b ^ a"
+  shows "s 2 6 = 100"
+---------------------------------------------------------
+
+2024-05-02 20:13:43,716 - agent - INFO - theorem mathd_algebra_15:
+  fixes s :: "nat \<Rightarrow> nat \<Rightarrow> nat"
+  assumes h0: "\<And>a b. s a b = a ^ b + b ^ a"
+  shows "s 2 6 = 100"
+proof -
+  (* We can see that $2 * 6 = 2^6 + 6^2 = 64 + 36 = 100$. *)
+  have "s 2 6 = 2 ^ 6 + 6 ^ 2" using h0
+    sledgehammer
+  also have "\<dots> = 64 + 36" sledgehammer
+  also have "\<dots> = 100" sledgehammer
+  finally show ?thesis
+    sledgehammer
+qed
+---------------------------------------------------------
+
+2024-05-02 20:13:58,800 - agent - INFO - 
+==== Success: True
+2024-05-02 20:13:58,801 - agent - INFO - --- Complete proof:
+theorem mathd_algebra_15:
+  fixes s :: "nat \<Rightarrow> nat \<Rightarrow> nat"
+  assumes h0: "\<And>a b. s a b = a ^ b + b ^ a"
+  shows "s 2 6 = 100"
+proof -
+(* We can see that $2 * 6 = 2^6 + 6^2 = 64 + 36 = 100$. *)
+have "s 2 6 = 2 ^ 6 + 6 ^ 2"
+using h0
+by auto
+also
+have "\<dots> = 64 + 36"
+by auto
+also
+have "\<dots> = 100"
+by auto
+finally
+show ?thesis
+by auto
+qed
+2024-05-02 20:13:58,802 - agent - INFO - Let $f(x) = 3\sqrt{2x - 7} - 8$.  Find $f(8)$. Show that it is 1.
+
+$f(8) = 3\sqrt{2\cdot 8 - 7} - 8 = 3\sqrt{9} - 8 =1$.
+
+theorem mathd_algebra_433:
+  fixes f :: "real \<Rightarrow> real"
+  assumes h0 : "\<And>x. f x = 3 * sqrt (2 * x -7) - 8"
+  shows "f 8 = 1"
+---------------------------------------------------------
+
+2024-05-02 20:14:03,298 - agent - INFO - theorem mathd_algebra_433:
+  fixes f :: "real \<Rightarrow> real"
+  assumes h0: "\<And>x. f x = 3 * sqrt (2 * x - 7) - 8"
+  shows "f 8 = 1"
+proof -
+  (* $f(8) = 3\sqrt{2\cdot 8 - 7} - 8 = 3\sqrt{9} - 8 = 1$ *)
+  have "f 8 = 3 * sqrt (2 * 8 - 7) - 8" using h0
+    sledgehammer
+  also have "\<dots> = 3 * sqrt 9 - 8"
+    sledgehammer
+  also have "\<dots> = 3 * 3 - 8"
+    sledgehammer
+  also have "\<dots> = 9 - 8"
+    sledgehammer
+  also have "\<dots> = 1"
+    sledgehammer
+  finally show ?thesis
+    sledgehammer
+qed
+---------------------------------------------------------
+
+2024-05-02 20:14:18,360 - agent - INFO - 
+==== Success: True
+2024-05-02 20:14:18,360 - agent - INFO - --- Complete proof:
+theorem mathd_algebra_433:
+  fixes f :: "real \<Rightarrow> real"
+  assumes h0: "\<And>x. f x = 3 * sqrt (2 * x - 7) - 8"
+  shows "f 8 = 1"
+proof -
+(* $f(8) = 3\sqrt{2\cdot 8 - 7} - 8 = 3\sqrt{9} - 8 = 1$ *)
+have "f 8 = 3 * sqrt (2 * 8 - 7) - 8"
+using h0
+by auto
+also
+have "\<dots> = 3 * sqrt 9 - 8"
+by auto
+also
+have "\<dots> = 3 * 3 - 8"
+by auto
+also
+have "\<dots> = 9 - 8"
+by auto
+also
+have "\<dots> = 1"
+by auto
+finally
+show ?thesis
+by auto
+qed

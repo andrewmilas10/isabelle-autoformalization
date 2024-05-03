@@ -1,0 +1,5 @@
+Translate the informal solution into a sketch of the
+formal Isabelle proof. Add `sledgehammer` in the sketch whenever
+possible (i.e. as opposed to methods such as simp or auto). `sledgehammer` will be used to call the automated Sledgehammer prover.
+Also, make sure output facts from one step are used as inputs in the next step when appropriate.
+Here are some examples:

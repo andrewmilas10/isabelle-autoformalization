@@ -1,0 +1,9 @@
+0: data/full_data/valid/algebra_manipexpr_apbeq2cceqiacpbceqm2.json of informal length 39 proved in 2 attempts
+2: data/full_data/valid/mathd_algebra_15.json of informal length 52 proved in 1 attempts
+3: data/full_data/valid/mathd_algebra_433.json of informal length 53 proved in 2 attempts
+4: data/full_data/valid/mathd_numbertheory_81.json of informal length 55 proved in 2 attempts
+7: data/full_data/valid/mathd_algebra_35.json of informal length 66 proved in 1 attempts
+8: data/full_data/valid/mathd_algebra_480.json of informal length 67 proved in 1 attempts
+12: data/full_data/valid/mathd_algebra_159.json of informal length 89 proved in 2 attempts
+17: data/full_data/valid/mathd_algebra_192.json of informal length 95 proved in 2 attempts
+18: data/full_data/valid/mathd_algebra_547.json of informal length 98 proved in 1 attempts
