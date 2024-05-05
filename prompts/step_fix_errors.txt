@@ -1,0 +1,33 @@
+I am hoping to fix an incorrectly generated Isabelle proof when given the location and reason for one of its errors. Here is an example:
+
+## Incorrect Proof
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+proof -
+  (* Step 1: Directly show the result with included types *)
+  show "(17 * 18) mod 4 = 2"
+    by simp
+qed
+
+## Last Statements
+['\n  (* Step 1: Directly show the result with included types *)\n  ', 'show "(17 * 18) mod 4 = 2"', 'by simp']
+In Step 1 of the proof's comments 
+
+## Reason
+Step error: Failed to apply initial proof method (line 1):
+goal (1 subgoal):
+ 1. (17::'a) * (18::'a) mod (4::'a) = (2::'a)
+At command "by" (line 1)
+
+## Fixed Proof
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+proof -
+  (* Step 1: Directly show the result with included types *)
+  (* CHANGE: include types so they aren't over general 'a *)
+  show "((17::nat) * 18) mod 4 = (2::nat)" 
+    (* CHANGE: try using sledgehamer since 'by simp' failed *)
+    sledgehammer 
+qed
+
+Now similarly fix the below Isabelle proof. If you believe your statement is correct, but Isabelle is having trouble applying proof methods to prove it, try to see if the proof can be simplified so that not as much detail is needed but the high level steps still remain the same. If you believe more detail may be necessary, try to add a couple statements before the error to make sure neccessary facts are used or in order to clarify the proof further to Isabelle. Make sure to provide the entire full proof again (along with the theorem statement) with your changes and add comments that begin with CHANGE to indicate why you make the changes that you do. Please focus on making changes for the step with the specified error.

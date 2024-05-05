@@ -1,0 +1,27 @@
+## Problem
+Suppose that $x,$ $y,$ and $z$ are three positive numbers that satisfy the equations $xyz = 1,$ $x + \frac {1}{z} = 5,$ and $y + \frac {1}{x} = 29.$ Then $z + \frac {1}{y} = \frac {m}{n},$ where $m$ and $n$ are [[relatively prime]] positive integers. Find $m + n$. Show that it is 5. note: this is the type of problem that makes you think symmetry, but actually can be solved easily with substitution, and other normal technniques
+
+## Informal proof
+We can rewrite $xyz=1$ as $\frac{1}{z}=xy$. Substituting into one of the given equations, we have $x+xy=5$ $x(1+y)=5$ $\frac{1}{x}=\frac{1+y}{5}.$ we can substitute back into $y+\frac{1}{x}=29$ to obtain $y+\frac{1+y}{5}=29$ $5y+1+y=145$ $y=24.$ We can then substitute once again to get $x=\frac15$ $z=\frac{5}{24}.$ Thus, $z+\frac1y=\frac{5}{24}+\frac{1}{24}=\frac{1}{4}$, so $m+n=005$.
+
+## Formal statement
+theorem aimeI_2000_p7:
+  fixes x y z :: real
+    and p :: rat
+  assumes "0 < x \<and> 0 < y \<and> 0 < z"
+    and "x * y * z = 1"
+    and "x + 1 / z = 5"
+    and "y + 1 / x = 29"
+    and "z + 1 / y = p"
+    and "0 < p" 
+  shows "let (m,n) = quotient_of p in m + n = 5"
+
+## Structured informal proof
+Notes for Structured proof: The main idea of the solution is in how expressions from one equation are carefully substituted to another. In Isabelle there will be a good amount of manipulation to get right so we should break it down into multiple steps.
+Estimated Isabelle Proof Difficulty: 7
+Step 1: Rewrite the equation $xyz = 1$ as $\frac{1}{z} = xy$.
+Step 2: Substitute the value of $\frac{1}{z}$ into the equation $x + \frac{1}{z} = 5$, resulting in $x + xy = 5$ then $x(1 + y) = 5$, then $\frac{1}{x} = \frac{1+y}{5}.
+Step 3: Substitute the value of $\frac{1}{x}$ into the equation $y + \frac{1}{x} = 29$, leading to $y + \frac{1+y}{5} = 29$. Solve for $y$, getting $y = 24$.
+Step 4: Substitute the value of $y$ back into the equations to find $x = \frac{1}{5}$ and $z = \frac{5}{24}$.
+Step 5: Find $z + \frac{1}{y} = \frac{5}{24} + \frac{1}{24} = \frac{1}{4}$.
+Step 6: The rational $p = \frac{1}{4}$ can be expressed as $p = \frac{m}{n}$ where $m = 1$ and $n = 4$. Hence $m + n = 5$.

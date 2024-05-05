@@ -1,0 +1,1 @@
+1: data/full_data/test/mathd_algebra_171.json of informal length 35 proved with sol of length 309

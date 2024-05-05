@@ -6,8 +6,9 @@ import openai
 
 
 class LMFunction(object):
-    def __init__(self, engine='gpt-3.5-turbo', max_tokens=512):
+    def __init__(self, engine='gpt-3.5-turbo', temperature=1.0, max_tokens=512):
         self.engine = engine
+        self.temperature = temperature
         self.max_tokens = max_tokens
         self.openai = openai
         openai.api_key = os.environ['OPENAI_API_KEY']
@@ -22,7 +23,7 @@ class LMFunction(object):
                         {"role": "user", "content": prompt}
                     ],
                     max_tokens=max_tokens,
-                    temperature=1.0
+                    temperature=self.temperature
                 )
             except self.openai.error.OpenAIError as e:
                 time.sleep(retry_wait)

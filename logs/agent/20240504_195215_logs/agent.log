@@ -1,0 +1,19 @@
+2024-05-04 19:52:15,381 - agent - INFO - StepByStepAgent initialized
+2024-05-04 19:52:15,381 - agent - INFO - 
+---------------------New Problem (1: data/full_data/valid/mathd_algebra_48.json) ------------------------------------
+Simplify $(9-4i)-(-3-4i)$. Show that it is 12.
+
+## Informal proof
+$(9-4i)- (-3-4i) = 9-4i +3 +4i = (9+3) + (-4i+4i) = 12$.
+
+## Formal statement
+theorem mathd_algebra_48:
+  fixes q e :: complex
+  assumes h0 : "q = Complex 9 (-4)"
+    and h1 : "e = Complex (-3) (-4)"
+  shows "q - e = 12"
+
+
+## Structured informal proof
+
+

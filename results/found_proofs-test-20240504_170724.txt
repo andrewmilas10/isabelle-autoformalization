@@ -1,0 +1,7 @@
+1: data/full_data/test/mathd_numbertheory_342.json of informal length 54 proved with sol of length 195
+2: data/full_data/test/mathd_numbertheory_66.json of informal length 58 proved with sol of length 228
+5: data/full_data/test/mathd_algebra_346.json of informal length 71 proved with sol of length 610
+6: data/full_data/test/mathd_numbertheory_517.json of informal length 78 proved with sol of length 256
+7: data/full_data/test/mathd_numbertheory_85.json of informal length 78 proved with sol of length 298
+9: data/full_data/test/mathd_algebra_419.json of informal length 80 proved with sol of length 535
+10: data/full_data/test/mathd_numbertheory_207.json of informal length 83 proved with sol of length 270

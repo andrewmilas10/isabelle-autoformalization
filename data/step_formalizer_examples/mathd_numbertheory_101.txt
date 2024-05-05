@@ -1,0 +1,20 @@
+## Problem
+Find the modulo 4 residue of $17 \cdot 18$. Show that it is 2.
+
+## Structured informal proof
+Notes for Structured proof: Isabelle can handle the computation easily. We just need to mak sure to provide the correct types so it knows they are given as natural numbers in this problem.
+Estimated Isabelle Proof Difficulty: 1
+Step 1: Directly show the result with included types
+
+## Formal statement
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+
+## Isabelle Proof
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+proof -
+  (* Step 1: Directly show the result with included types *)
+  show "((17::nat) * 18) mod 4 = (2::nat)"
+    sledgehammer
+qed

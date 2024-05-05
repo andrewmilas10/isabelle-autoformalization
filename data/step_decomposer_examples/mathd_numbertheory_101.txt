@@ -1,0 +1,14 @@
+## Problem
+Find the modulo 4 residue of $17 \cdot 18$. Show that it is 2.
+
+## Informal proof
+$17 \cdot 18 \equiv 1 \cdot 2 \equiv 2 \pmod{4}$.
+
+## Formal statement
+theorem mathd_numbertheory_101:
+  "(17 * 18) mod 4 = (2::nat)"
+
+## Structured informal proof
+Notes for Structured proof: Isabelle can handle the computation easily. We just need to mak sure to provide the correct types so it knows they are given as natural numbers in this problem.
+Estimated Isabelle Proof Difficulty: 1
+Step 1: Directly show the result with included types

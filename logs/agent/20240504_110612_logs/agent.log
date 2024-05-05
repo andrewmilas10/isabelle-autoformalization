@@ -1,0 +1,18 @@
+2024-05-04 11:06:12,523 - agent - INFO - BasicAgent initialized
+2024-05-04 11:06:12,524 - agent - INFO - 
+---------------------New Problem (1: data/full_data/test/mathd_algebra_484.json) ------------------------------------
+Evaluate $\log_327$. Show that it is 3.
+
+### Solution
+
+Since $3^3=27$, $\log_327=3$.*)
+
+Formal:
+theorem mathd_algebra_484 :
+  "(ln 27) / (ln 3) = (3::real)"
+### Isabelle Proof
+
+
+
+2024-05-04 11:06:12,524 - agent - INFO - --------Attempt 1--------
+

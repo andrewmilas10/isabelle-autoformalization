@@ -98,10 +98,18 @@ class Checker(object):
         success = False
         step_results = []
         tls_name = 'default'
+        # print(len(steps))
         for i, step in enumerate(steps):
             try:
                 # print("Andrew: Running step", i, step)
                 time0 = time.time()
+                if 'simp' in step or 'auto' in step:
+                    print("Andrew: Running step", i, step, "as normalhammer")
+                    old, step = step, 'normalhammer'
+                    obs, reward, done, metadata, error = self._run_sledgehammer(step, i, tls_name, env)
+                    if error is not None:
+                        step = old
+                        obs, reward, done, metadata, error = self._run_step(step, i, tls_name, env)
                 if 'normalhammer' in step:
                     obs, reward, done, metadata, error = self._run_sledgehammer(step, i, tls_name, env)
                 else:

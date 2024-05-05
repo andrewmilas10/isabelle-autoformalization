@@ -1,7 +1,7 @@
 import multiprocessing as mp
 import os
 import utils as U
-from agent import Agent
+from agent import BasicAgent, StepByStepAgent
 from datetime import datetime
 import pytz
 import logging
@@ -35,21 +35,22 @@ for name in os.listdir(f"data/full_data/{data_split}"):
     context = U.load_json(path)
     problem_names.append((path, len(context["informal_proof"]), context))
 
-problem_names = sorted(problem_names, key=lambda x: x[1])[2:62]
+from random import shuffle
+problem_names = sorted(problem_names, key=lambda x: x[1])[7:]
+# shuffle(problem_names)
 for i, (path, proof_len, _) in enumerate(problem_names):
     print(f"{i + 1}: {proof_len} chars: {path}")
 print(f"Total number of problems: {len(problem_names)}\n")
     
-agent = Agent(logger=logger)
+# agent = BasicAgent(logger=logger)
+agent = StepByStepAgent(logger=logger)
 corrects = 0
 for i, (path, proof_len, _) in enumerate(problem_names):
-    for j in range(3):
-        print(f"Processing {i + 1}/{len(problem_names)}. Attempt {j+1}: {path}")
-        context = U.load_json(path)
-        solved = agent.attempt_formalization(context, path, i)
-        if solved:
-            corrects += 1
-            with open(f"results/found_proofs-{start_time}.txt", "a") as f:
-                f.write(f"{i}: {path} of informal length {proof_len} proved in {j+1} attempts\n")
-            break
+    context = U.load_json(path)
+    solved, proof = agent.attempt_problem(context, path, i)
+    print("HIII", solved)
+    if solved:
+        corrects += 1
+        with open(f"results/found_proofs-{data_split}-{start_time}.txt", "a") as f:
+            f.write(f"{i}: {path} of informal length {proof_len} proved with sol of length {len(proof)}\n")
     print(f"Correct {corrects} out of {i+1}. Ratio: {corrects/(i+1)}\n")

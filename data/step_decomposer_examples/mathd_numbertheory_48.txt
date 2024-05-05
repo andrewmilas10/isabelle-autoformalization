@@ -1,0 +1,18 @@
+## Problem
+If $321_{b}$ is equal to the base 10 integer 57, find $b$ given that $b>0$. Show that it is 4.
+
+## Informal proof
+Converting $321_{b}$ to base 10 and setting it equal to 57, we find that  \begin{align*} 3(b^2)+2(b^1)+1(b^0)&=57 \\ 3b^2+2b+1&=57 \\\Rightarrow\qquad 3b^2+2b-56&=0 \\\Rightarrow\qquad (3b+14)(b-4)&=0 \end{align*}This tells us that $b$ is either $-\frac{14}{3}$ or $4$. We know that $b>0$, so $b=4$.
+
+## Formal statement
+theorem mathd_numbertheory_48:
+  fixes b :: real
+  assumes h0 : "0<b"
+    and h1 : "3 * b^2 + 2 * b + 1 = 57"
+  shows "b=4"
+
+## Structured informal proof
+Notes for Structured proof: In the formal statement, we are already given the quadratic, so solving the problem reduces to factoring it and taking the positive root.
+Estimated Isabelle Proof Difficulty: 3
+Step 1: From the quadratic equation given as assumption h1, we can factor to find $(3b+14)(b-4)=0$.
+Step 2: Since we know that $b>0$, the only option is that $b=4$.

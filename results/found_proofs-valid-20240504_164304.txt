@@ -1,0 +1,8 @@
+0: data/full_data/valid/algebra_manipexpr_apbeq2cceqiacpbceqm2.json of informal length 39 proved with sol of length 556
+1: data/full_data/valid/mathd_numbertheory_101.json of informal length 49 proved with sol of length 182
+2: data/full_data/valid/mathd_algebra_15.json of informal length 52 proved with sol of length 505
+3: data/full_data/valid/mathd_algebra_433.json of informal length 53 proved with sol of length 537
+4: data/full_data/valid/mathd_numbertheory_81.json of informal length 55 proved with sol of length 252
+7: data/full_data/valid/mathd_algebra_35.json of informal length 66 proved with sol of length 600
+8: data/full_data/valid/mathd_algebra_480.json of informal length 67 proved with sol of length 535
+12: data/full_data/valid/mathd_algebra_159.json of informal length 89 proved with sol of length 533

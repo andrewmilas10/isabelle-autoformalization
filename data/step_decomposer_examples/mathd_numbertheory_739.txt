@@ -1,0 +1,15 @@
+## Problem
+For each positive integer $n$, let $n!$ denote the product $1\cdot 2\cdot 3\cdot\,\cdots\,\cdot (n-1)\cdot n$.
+
+## Informal proof
+Notice that $10=2\cdot 5$. Both are factors of $9!$, so the remainder is $0$.
+
+## Formal statement
+theorem mathd_numbertheory_739:
+  "(fact 9) mod 10 = (0::nat)"
+
+## Structured informal proof
+Notes for Structured proof: Although informally this is simple, we need to be careful when formalizing that the type of numbers are consistently given per statement, and we need to make explicit how $2$ and $5$ dividing $9!$ guarantees $10$ divides $9!$ since $10=lcm(2,5)$.
+Estimated Isabelle Proof Difficulty: 3
+Step 1: Note that $2$ and $5$ are both factors of $9!$.
+Step 2: Use the fact the lcm is a "least" common multiple to get that $10$ divides $9!$ and conclude the proof.
