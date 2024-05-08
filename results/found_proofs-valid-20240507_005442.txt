@@ -1,0 +1,12 @@
+119: data/full_data/valid/induction_sum2kp1npqsqm1.json of informal length 316 proved with sol of length 645
+121: data/full_data/valid/mathd_algebra_89.json of informal length 322 proved with sol of length 874
+124: data/full_data/valid/mathd_numbertheory_132.json of informal length 324 proved with sol of length 572
+128: data/full_data/valid/mathd_algebra_214.json of informal length 337 proved with sol of length 874
+130: data/full_data/valid/mathd_numbertheory_252.json of informal length 343 proved with sol of length 342
+138: data/full_data/valid/mathd_algebra_11.json of informal length 359 proved with sol of length 1033
+139: data/full_data/valid/amc12b_2020_p5.json of informal length 369 proved with sol of length 754
+141: data/full_data/valid/mathd_algebra_123.json of informal length 372 proved with sol of length 801
+144: data/full_data/valid/mathd_algebra_43.json of informal length 382 proved with sol of length 859
+147: data/full_data/valid/amc12a_2009_p2.json of informal length 390 proved with sol of length 556
+149: data/full_data/valid/mathd_numbertheory_257.json of informal length 396 proved with sol of length 595
+150: data/full_data/valid/mathd_algebra_119.json of informal length 396 proved with sol of length 746
