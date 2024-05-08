@@ -44,5 +44,3 @@ class LMFunction(object):
         )
         evaluation = self._parse_message(msg)
         return evaluation
-
-# def get

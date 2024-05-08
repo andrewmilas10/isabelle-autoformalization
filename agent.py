@@ -104,7 +104,8 @@ class StepByStepAgent(Agent):
             self.formalizer_prompt = f.read()
             for _path, prompt_text in self.formalizer_examples.items():
                 self.formalizer_prompt += (prompt_text + "\n\n")
-        self.formalizer_prompt += "Now, here is your problem. Please remember to always use sledgehammer (never use auto or simp or any other proof method) and remember to include types for expressions that involve only numbers as in the above examples. \n## Problem\n"
+        self.formalizer_prompt += "Now, here is your problem. Please remember to always use sledgehammer as opposed to other proof methods such as simp or auto"+\
+             " and remember to include types for expressions that involve only numbers as in the above examples. \n## Problem\n"
     
     def attempt_problem(self, context, path, idx):
         decomposer_prob = context["informal_statement"] + '\n\n## Informal proof\n' + context["informal_proof"] + \

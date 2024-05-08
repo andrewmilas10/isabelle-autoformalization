@@ -38,18 +38,19 @@ for name in os.listdir(f"data/full_data/{data_split}"):
 from random import shuffle
 restart_from = 0
 problem_names = sorted(problem_names, key=lambda x: x[1])[restart_from:]
-# shuffle(problem_names)
+# shuffle(problem_names) # Uncomment to evaluate in random order
+
 for i, (path, proof_len, _) in enumerate(problem_names):
     print(f"{i + 1}: {proof_len} chars: {path}")
 print(f"Total number of problems: {len(problem_names)}\n")
     
-# agent = BasicAgent(logger=logger)
+# start evaluating agent
 agent = StepByStepAgent(logger=logger)
+# agent = BasicAgent(logger=logger) # Uncomment to use BasicAgent
 corrects = 0
 for i, (path, proof_len, _) in enumerate(problem_names):
     context = U.load_json(path)
     solved, proof = agent.attempt_problem(context, path, i+restart_from)
-    print("HIII", solved)
     if solved:
         corrects += 1
         with open(f"results/found_proofs-{data_split}-{start_time}.txt", "a") as f:

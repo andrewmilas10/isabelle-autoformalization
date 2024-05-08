@@ -79,12 +79,9 @@ class Checker(object):
 
     def check(self, statement_and_proof):
         # Initialize environment
-        # print("Andrew: Initializing environment 1")    
         env = self._initialize()
-        # print("Andrew: Initializing environment 2")    
         env.initialise()
 
-        # print("Andrew: Initialized environment")
         # Wrap and parse theorem
         theory = Checker.wrap_theorem(statement_and_proof)
         steps = Checker.get_parsed(env, theory)
@@ -101,10 +98,8 @@ class Checker(object):
         # print(len(steps))
         for i, step in enumerate(steps):
             try:
-                # print("Andrew: Running step", i, step)
                 time0 = time.time()
                 if 'simp' in step or 'auto' in step:
-                    print("Andrew: Running step", i, step, "as normalhammer")
                     old, step = step, 'normalhammer'
                     obs, reward, done, metadata, error = self._run_sledgehammer(step, i, tls_name, env)
                     if error is not None:
