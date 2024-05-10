@@ -9,5 +9,5 @@ Code in utils directory is adapted from the repositories:
 In order to evaluate running an agent on the miniF2F dataset:
 * Add an environment variable 'OPENAI_API_KEY' with your key 
 * pip install dependencies from requirements.txt 
-* Install [PISA](https://github.com/albertqjiang/Portal-to-ISAbelle/tree/main) and follow README's instructions to start a PISA server
+* Install [PISA](https://github.com/albertqjiang/Portal-to-ISAbelle/tree/main) and follow README's instructions to start an ISABELLE server
 * Run 'python evaluate_minif2f.py'
